@@ -1,5 +1,5 @@
 {
-  "name": "with-yarn",
+  "name": "facebas",
   "private": true,
   "workspaces": [
     "apps/*",
