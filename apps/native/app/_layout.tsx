@@ -38,7 +38,7 @@ export default function RootLayout() {
 
   return (
     <KeyboardProvider>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </KeyboardProvider>
   );
 }
