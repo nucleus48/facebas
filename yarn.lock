@@ -871,6 +871,11 @@
     "@eslint/core" "^0.13.0"
     levn "^0.4.1"
 
+"@expo-google-fonts/roboto@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.3.0.tgz#84964322c5a055b406968f70bb178112937e3561"
+  integrity sha512-+/cmb6N/NDsFanV469ri52C/kz0QWYWnNBi9miKLSlTVpA3EJeLro3mmBxmZxH/N9PRRpoFZ6+dmwkOxh/jbZg==
+
 "@expo/cli@0.24.13":
   version "0.24.13"
   resolved "https://registry.yarnpkg.com/@expo/cli/-/cli-0.24.13.tgz#0066e038982b7143f966d688e76e02d935f0dc8b"
@@ -4084,10 +4089,10 @@ expo-notifications@~0.31.1:
     expo-application "~6.1.4"
     expo-constants "~17.1.6"
 
-expo-router@~5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-5.0.6.tgz#e52c9e4f0de5f8878ed71d71a4f2203440016d79"
-  integrity sha512-/44G3liB7LMMDoUO+lN5TS8XvZrAhLtq7cVGoilO2QkoSBjFQfxFA9VYOVWVlu2R80tN6dM3cgsEuoA275FGQg==
+expo-router@~5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-5.0.7.tgz#032c1de9d06237664169959f7178a818d7b0e677"
+  integrity sha512-NlEgRXCKtseDuIHBp87UfkvqsuVrc0MYG+zg33dopaN6wik4RkrWWxUYdNPHub0s/7qMye6zZBY4ZCrXwd/xpA==
   dependencies:
     "@expo/metro-runtime" "5.0.4"
     "@expo/server" "^0.6.2"
@@ -5564,6 +5569,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lucide-react-native@^0.511.0:
+  version "0.511.0"
+  resolved "https://registry.yarnpkg.com/lucide-react-native/-/lucide-react-native-0.511.0.tgz#f62dc1a4754b902947dae88baf78612aa5a7a77e"
+  integrity sha512-brCrakogilGx3inT0em8HUU11dsxyu62+P6sjqU7WKgkfcIc8Q0Ya3zDcBQ8EG3c1HsCSvgFT5tWLetVFAsqhQ==
+
 makeerror@1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/makeerror/-/makeerror-1.0.12.tgz#3e5dd2079a82e812e983cc6610c4a2cb0eaa801a"
@@ -6601,10 +6611,10 @@ react-native-is-edge-to-edge@1.1.7, react-native-is-edge-to-edge@^1.1.6:
   resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.7.tgz#28947688f9fafd584e73a4f935ea9603bd9b1939"
   integrity sha512-EH6i7E8epJGIcu7KpfXYXiV2JFIYITtq+rVS8uEb+92naMRBdxhTuS8Wn2Q7j9sqyO0B+Xbaaf9VdipIAmGW4w==
 
-react-native-keyboard-controller@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/react-native-keyboard-controller/-/react-native-keyboard-controller-1.17.1.tgz#46efe148c1bdd0ee22094dcb2660f70f81e6544e"
-  integrity sha512-YM3GYvtkuWimCKkZFURn5hIb1WiKOQqi2DijdwZSF5QSSzGqfqwzEEC3bm1xCN8HGHAEIXAaWIBUsc3Xp5L+Ng==
+react-native-keyboard-controller@^1.17.2:
+  version "1.17.2"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-controller/-/react-native-keyboard-controller-1.17.2.tgz#dc0a1a33ca47b40eea11ebac4f8f9a8e31503b1e"
+  integrity sha512-I9gyTeplWpJtqx8foU26pWuVVsd/nYKYPYVpF/k6jhera9Q7Z99twknQsBJ8j8S4on06T0nUB0XMTmU1f5HR1w==
   dependencies:
     react-native-is-edge-to-edge "^1.1.6"
 
@@ -6644,6 +6654,11 @@ react-native-screens@~4.10.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-vision-camera@^4.6.4:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/react-native-vision-camera/-/react-native-vision-camera-4.6.4.tgz#f1c51dda2c5d558ea0ec235e2401abf5efa46875"
+  integrity sha512-d998uTHsGJ9bTlsClgT37RK1sK7ZQekv5y6ylynds3vmdK6YbFQJUoi2cvMrFN4dp9qvSlCjEfwekjMIz3guQA==
+
 react-native-web@~0.20.0:
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.20.0.tgz#3fb0591999ed4b54d7822a2785547415e8a5c031"
@@ -6665,6 +6680,13 @@ react-native-webview@13.13.5:
   dependencies:
     escape-string-regexp "^4.0.0"
     invariant "2.2.4"
+
+react-native-worklets-core@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-worklets-core/-/react-native-worklets-core-1.5.0.tgz#f4dec0c389b66dd4a70ae58addb796b337e9256a"
+  integrity sha512-LtXzd08140dK4Y5YIir6oALz+28tkAEZfFZgwaxOh1FnmJ/oGKeNoX+SBWOIQoe12C4i5BvGvh+X/bRGO9mEmQ==
+  dependencies:
+    string-hash-64 "^1.0.3"
 
 react-native@0.79.2:
   version "0.79.2"
@@ -7313,6 +7335,11 @@ strict-uri-encode@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
   integrity sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==
+
+string-hash-64@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/string-hash-64/-/string-hash-64-1.0.3.tgz#0deb56df58678640db5c479ccbbb597aaa0de322"
+  integrity sha512-D5OKWKvDhyVWWn2x5Y9b+37NUllks34q1dCDhk/vYcso9fmhs+Tl3KR/gE4v5UNj2UA35cnX4KdVVGkG1deKqw==
 
 "string-width-cjs@npm:string-width@^4.2.0":
   version "4.2.3"
