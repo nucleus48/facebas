@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .t-base {
+    @apply text-base font-roboto-400;
+  }
+}
