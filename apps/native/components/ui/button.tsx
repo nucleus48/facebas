@@ -14,7 +14,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <Pressable
-      className={cn("bg-slate-900 rounded-xl py-3", className)}
+      className={cn("bg-slate-900 rounded-xl h-[48px] px-5 items-center justify-center", className)}
       {...props}
     >
       <Text
