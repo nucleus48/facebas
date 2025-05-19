@@ -170,8 +170,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        heading: undefined,
-        body: undefined,
+        heading: ["Roboto_700Regular"],
+        body: ["Roboto_400Regular"],
         mono: undefined,
         roboto: ["Roboto", "sans-serif"],
         "roboto-400": ["Roboto_400Regular"],

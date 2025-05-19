@@ -1,22 +1,20 @@
 import { firebaseAuth } from "@/lib/firebase";
-import { useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { type User } from "firebase/auth";
 import { createContext, use, useEffect, useState } from "react";
 
 export interface AuthContextValue {
-  user: User;
+  user: User | null;
+  isLoading: boolean;
+  isAuthenticated: boolean;
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null);
 
-AuthContext.displayName = "AuthContext";
-
 export default function AuthProvider({ children }: React.PropsWithChildren) {
-  const [user, setUser] = useState<User | null>();
+  const [user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     return firebaseAuth.onAuthStateChanged((user) => {
@@ -26,24 +24,15 @@ export default function AuthProvider({ children }: React.PropsWithChildren) {
       }
 
       setIsLoading(false);
+      SplashScreen.hide();
     });
   }, []);
 
-  useEffect(() => {
-    if (isLoading) return;
-
-    if (!isAuthenticated) {
-      router.replace("/sign-in");
-    }
-
-    SplashScreen.hide();
-  }, [isLoading, isAuthenticated, router]);
-
-  if (isLoading || !user) {
-    return null;
-  }
-
-  return <AuthContext value={{ user }}>{children}</AuthContext>;
+  return (
+    <AuthContext value={{ user, isLoading, isAuthenticated }}>
+      {children}
+    </AuthContext>
+  );
 }
 
 export const useAuth = () => {

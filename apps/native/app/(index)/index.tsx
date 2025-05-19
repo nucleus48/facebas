@@ -1,16 +1,27 @@
 import AttendanceCard from "@/components/ui/attendance-card";
 import FAB from "@/components/ui/fab";
+import { firebaseAuth } from "@/lib/firebase";
 import { Stack, useRouter } from "expo-router";
-import { UserIcon } from "lucide-react-native";
+import { LogOutIcon, UserIcon } from "lucide-react-native";
 import { Pressable } from "react-native";
 
 export default function HomeScreen() {
   const router = useRouter();
 
+  const handleSignOut = async () => {
+    firebaseAuth.signOut();
+    router.dismissTo("/sign-in");
+  };
+
   const renderHeaderRight = () => (
-    <Pressable>
-      <UserIcon size={20} />
-    </Pressable>
+    <>
+      <Pressable>
+        <UserIcon size={20} />
+      </Pressable>
+      <Pressable onPress={handleSignOut}>
+        <LogOutIcon size={20} />
+      </Pressable>
+    </>
   );
 
   return (

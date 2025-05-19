@@ -11,6 +11,7 @@ import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
+import AuthProvider from "@/providers/auth-provider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,7 +36,9 @@ export default function RootLayout() {
     <KeyboardProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <GluestackUIProvider mode="light">
-          <Slot />
+          <AuthProvider>
+            <Slot />
+          </AuthProvider>
         </GluestackUIProvider>
       </GestureHandlerRootView>
     </KeyboardProvider>
