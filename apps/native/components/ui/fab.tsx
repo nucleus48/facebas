@@ -1,4 +1,6 @@
+import { useNavigation } from "expo-router";
 import { PlusIcon } from "lucide-react-native";
+import { createContext, use, useEffect } from "react";
 import { Pressable, View } from "react-native";
 import Animated, {
   SharedValue,
@@ -15,12 +17,7 @@ export interface FABActionProps {
   index: number;
   title: string;
   btnText: string;
-  isExpanded: SharedValue<boolean>;
   onPress?: () => void;
-}
-
-export interface FABProps {
-  actions: Omit<FABActionProps, "index" | "isExpanded">[];
 }
 
 const SPRING_CONFIG = {
@@ -31,8 +28,11 @@ const SPRING_CONFIG = {
 
 const OFFSET = 60;
 
-export default function FAB({ actions }: FABProps) {
+const FABContext = createContext<SharedValue<boolean> | null>(null);
+
+export default function FAB({ children }: React.PropsWithChildren) {
   const isExpanded = useSharedValue(false);
+  const navigation = useNavigation();
 
   const handlePress = () => {
     isExpanded.value = !isExpanded.value;
@@ -46,36 +46,33 @@ export default function FAB({ actions }: FABProps) {
     };
   });
 
+  useEffect(() => {
+    return navigation.addListener("blur", () => {
+      isExpanded.value = false;
+    });
+  }, [navigation, isExpanded]);
+
   return (
-    <View className="absolute bottom-16 right-5">
-      <AnimatedPressable
-        onPress={handlePress}
-        style={plusIconStyle}
-        className="p-4 bg-blue-600 rounded-full"
-      >
-        <PlusIcon color={"#FFFFFF"} />
-      </AnimatedPressable>
-      {actions.map((action, index) => (
-        <FABAction
-          key={index}
-          index={index}
-          isExpanded={isExpanded}
-          {...action}
-        />
-      ))}
-    </View>
+    <FABContext value={isExpanded}>
+      <View className="absolute bottom-16 right-5">
+        <AnimatedPressable
+          onPress={handlePress}
+          style={plusIconStyle}
+          className="p-4 bg-blue-600 rounded-full"
+        >
+          <PlusIcon color={"#FFFFFF"} />
+        </AnimatedPressable>
+        {children}
+      </View>
+    </FABContext>
   );
 }
 
-function FABAction({
-  title,
-  btnText,
-  index,
-  isExpanded,
-  onPress,
-}: FABActionProps) {
+function FABAction({ title, btnText, index, onPress }: FABActionProps) {
+  const isExpanded = use(FABContext)!;
+
   const animatedStyles = useAnimatedStyle(() => {
-    const moveValue = isExpanded.value ? OFFSET * (index + 1) : 0;
+    const moveValue = isExpanded.value ? OFFSET * index : 0;
     const translateValue = withSpring(-moveValue, SPRING_CONFIG);
     const delay = index * 100;
 
@@ -106,3 +103,5 @@ function FABAction({
     </Animated.View>
   );
 }
+
+FAB.Action = FABAction;

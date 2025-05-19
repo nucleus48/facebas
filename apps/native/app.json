@@ -25,9 +25,7 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.face.bas",
-      "permissions": [
-        "android.permission.CAMERA"
-      ]
+      "permissions": ["android.permission.CAMERA"]
     },
     "web": {
       "bundler": "metro",
@@ -51,6 +49,13 @@
         {
           "enableFTS": true,
           "useSQLCipher": true
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "$(PRODUCT_NAME) needs access to your Camera.",
+          "recordAudioAndroid": false
         }
       ],
       [

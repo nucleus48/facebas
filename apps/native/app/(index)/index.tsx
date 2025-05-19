@@ -1,15 +1,11 @@
-import JoinAttendanceBottomSheet from "@/components/modal/join-attendance-bottom-sheet";
 import AttendanceCard from "@/components/ui/attendance-card";
 import FAB from "@/components/ui/fab";
-import BottomSheet from "@gorhom/bottom-sheet";
 import { Stack, useRouter } from "expo-router";
 import { UserIcon } from "lucide-react-native";
-import { useRef } from "react";
 import { Pressable } from "react-native";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const bottomSheetRef = useRef<BottomSheet>(null);
 
   const renderHeaderRight = () => (
     <Pressable>
@@ -23,21 +19,20 @@ export default function HomeScreen() {
         options={{ title: "Attendance", headerRight: renderHeaderRight }}
       />
       <AttendanceCard />
-      <FAB
-        actions={[
-          {
-            title: "Create",
-            btnText: "C",
-            onPress: () => router.push("/attendance/create"),
-          },
-          {
-            title: "Join",
-            btnText: "J",
-            onPress: () => bottomSheetRef.current?.expand(),
-          },
-        ]}
-      />
-      <JoinAttendanceBottomSheet ref={bottomSheetRef} />
+      <FAB>
+        <FAB.Action
+          index={1}
+          btnText="C"
+          title="Create"
+          onPress={() => router.push("/attendance/create")}
+        />
+        <FAB.Action
+          index={2}
+          btnText="J"
+          title="Join"
+          onPress={() => router.push("/attendance/join")}
+        />
+      </FAB>
     </>
   );
 }
