@@ -4,12 +4,12 @@ import { Link } from "expo-router";
 import { Text } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
-export default function SignUpScren() {
+export default function SignInScreen() {
   return (
     <KeyboardAwareScrollView contentContainerClassName="pt-safe-offset-20 p-5">
-      <Text className="t-base font-roboto-700 text-3xl mb-4">Sign Up</Text>
-      <Text className="t-base text-gray-600 mb-8">
-        Enter your email address and password to create an account
+      <Text className="t-base font-roboto-700 text-3xl mb-4">Sign In</Text>
+      <Text className="t-base text-slate-600 mb-8">
+        Welcome back! Please enter your email address and password to sign in
       </Text>
       <TextInput
         className="mb-4"
@@ -18,16 +18,16 @@ export default function SignUpScren() {
         autoCapitalize="none"
       />
       <TextInput className="mb-8" placeholder="Password" secureTextEntry />
-      <Button title="Create account" className="mb-8" />
+      <Button title="Continue" className="mb-8" />
       <Text className="t-base text-center mb-2">
         Don&apos;t have an account?
       </Text>
       <Link
         className="t-base text-center text-blue-600 active:underline"
-        href="/sign-in"
+        href="/sign-up"
         replace
       >
-        Sign in
+        Sign up
       </Link>
     </KeyboardAwareScrollView>
   );

@@ -12,10 +12,10 @@ export default function AttendanceCard() {
       </View>
       <View className="flex-row items-center gap-2">
         <UserIcon size={16} color={"#4b5563"} />
-        <Text className="t-base mr-2 text-gray-600">200 / 257</Text>
+        <Text className="t-base mr-2 text-slate-600">200 / 257</Text>
         <TablePropertiesIcon size={16} color={"#4b5563"} />
-        <Text className="t-base text-gray-600">7 / 9</Text>
-        <Text className="t-base text-sm ml-auto text-gray-600">10:18 pm</Text>
+        <Text className="t-base text-slate-600">7 / 9</Text>
+        <Text className="t-base text-sm ml-auto text-slate-600">10:18 pm</Text>
       </View>
     </Pressable>
   );

@@ -6,9 +6,8 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 
@@ -27,12 +26,6 @@ export default function RootLayout() {
     Roboto_700Bold,
   });
 
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hide();
-    }
-  }, [loaded, error]);
-
   if (!loaded && !error) {
     return null;
   }
@@ -40,7 +33,7 @@ export default function RootLayout() {
   return (
     <KeyboardProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Stack screenOptions={{ headerShown: false }} />
+        <Slot />
       </GestureHandlerRootView>
     </KeyboardProvider>
   );
