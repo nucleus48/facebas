@@ -1,4 +1,5 @@
 import "@/global.css";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import {
   Roboto_400Regular,
   Roboto_500Medium,
@@ -33,7 +34,9 @@ export default function RootLayout() {
   return (
     <KeyboardProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Slot />
+        <GluestackUIProvider mode="light">
+          <Slot />
+        </GluestackUIProvider>
       </GestureHandlerRootView>
     </KeyboardProvider>
   );
