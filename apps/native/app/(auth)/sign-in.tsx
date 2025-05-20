@@ -12,7 +12,7 @@ import { Heading } from "@/components/ui/heading";
 import { Input, InputField } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { firebaseAuth } from "@/lib/firebase";
-import { AuthSchema } from "@/lib/schema";
+import { AuthSchema, AuthSchemaData } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, router } from "expo-router";
 import { FirebaseError } from "firebase/app";
@@ -25,7 +25,6 @@ import {
   KeyboardAwareScrollView,
   KeyboardToolbar,
 } from "react-native-keyboard-controller";
-import { z } from "zod";
 
 export default function SignInScreen() {
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +33,7 @@ export default function SignInScreen() {
     control,
     handleSubmit,
     formState: { isSubmitting, isValid },
-  } = useForm<z.infer<typeof AuthSchema>>({
+  } = useForm<AuthSchemaData>({
     resolver: zodResolver(AuthSchema),
     defaultValues: {
       email: "",
@@ -42,7 +41,7 @@ export default function SignInScreen() {
     },
   });
 
-  const onSubmit = async ({ email, password }: z.infer<typeof AuthSchema>) => {
+  const onSubmit = async ({ email, password }: AuthSchemaData) => {
     try {
       setError(null);
       await signInWithEmailAndPassword(firebaseAuth, email, password);
@@ -95,7 +94,7 @@ export default function SignInScreen() {
             field: { value, onChange, onBlur, disabled },
             fieldState: { invalid, error },
           }) => (
-            <FormControl>
+            <FormControl isInvalid={invalid} isDisabled={disabled}>
               <FormControlLabel>
                 <FormControlLabelText>Email</FormControlLabelText>
               </FormControlLabel>
@@ -129,7 +128,7 @@ export default function SignInScreen() {
             field: { value, onChange, onBlur, disabled },
             fieldState: { invalid, error },
           }) => (
-            <FormControl>
+            <FormControl isInvalid={invalid} isDisabled={disabled}>
               <FormControlLabel>
                 <FormControlLabelText>Password</FormControlLabelText>
               </FormControlLabel>

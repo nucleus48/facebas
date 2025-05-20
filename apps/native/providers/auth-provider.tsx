@@ -4,7 +4,7 @@ import { type User } from "firebase/auth";
 import { createContext, use, useEffect, useState } from "react";
 
 export interface AuthContextValue {
-  user: User | null;
+  user: User;
   isLoading: boolean;
   isAuthenticated: boolean;
 }
@@ -29,7 +29,7 @@ export default function AuthProvider({ children }: React.PropsWithChildren) {
   }, []);
 
   return (
-    <AuthContext value={{ user, isLoading, isAuthenticated }}>
+    <AuthContext value={{ user: user!, isLoading, isAuthenticated }}>
       {children}
     </AuthContext>
   );

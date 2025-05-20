@@ -1,5 +1,6 @@
-import "@/global.css";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import "@/global.css";
+import AuthProvider from "@/providers/auth-provider";
 import {
   Roboto_400Regular,
   Roboto_500Medium,
@@ -11,7 +12,6 @@ import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
-import AuthProvider from "@/providers/auth-provider";
 
 SplashScreen.preventAutoHideAsync();
 

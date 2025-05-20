@@ -58,7 +58,7 @@ export default function FAB({ children }: React.PropsWithChildren) {
         <AnimatedPressable
           onPress={handlePress}
           style={plusIconStyle}
-          className="p-4 bg-blue-600 rounded-full"
+          className="p-4 bg-blue-600 rounded-full z-20"
         >
           <PlusIcon color={"#FFFFFF"} />
         </AnimatedPressable>
@@ -90,7 +90,7 @@ function FABAction({ title, btnText, index, onPress }: FABActionProps) {
 
   return (
     <Animated.View
-      className="absolute flex-row items-center gap-4 -z-10 right-0"
+      className="absolute flex-row items-center gap-4 z-10 right-0"
       style={animatedStyles}
     >
       <Animated.Text>{title}</Animated.Text>

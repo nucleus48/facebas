@@ -100,7 +100,7 @@ export default function SignUpScreen() {
             field: { value, onChange, onBlur, disabled },
             fieldState: { invalid, error },
           }) => (
-            <FormControl>
+            <FormControl isInvalid={invalid} isDisabled={disabled}>
               <FormControlLabel>
                 <FormControlLabelText>Email</FormControlLabelText>
               </FormControlLabel>
@@ -134,7 +134,7 @@ export default function SignUpScreen() {
             field: { value, onChange, onBlur, disabled },
             fieldState: { invalid, error },
           }) => (
-            <FormControl>
+            <FormControl isInvalid={invalid} isDisabled={disabled}>
               <FormControlLabel>
                 <FormControlLabelText>Password</FormControlLabelText>
               </FormControlLabel>
