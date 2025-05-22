@@ -1,6 +1,6 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initializeApp } from "firebase/app";
 import { getReactNativePersistence, initializeAuth } from "firebase/auth";
-import { MMKV } from "react-native-mmkv";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAalG8A68ZuWjVTWduGhR8ect3QMvaGdLM",
@@ -12,14 +12,7 @@ const firebaseConfig = {
   measurementId: "G-JLBX00TX5L",
 };
 
-const storage = new MMKV();
-const ReactNativePersistence = getReactNativePersistence({
-  setItem: async (key: string, value: string) => storage.set(key, value),
-  getItem: async (key: string) => storage.getString(key) ?? null,
-  removeItem: async (key: string) => storage.delete(key),
-});
-
 export const firebaseApp = initializeApp(firebaseConfig);
 export const firebaseAuth = initializeAuth(firebaseApp, {
-  persistence: ReactNativePersistence,
+  persistence: getReactNativePersistence(AsyncStorage),
 });

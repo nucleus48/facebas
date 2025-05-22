@@ -6,14 +6,19 @@ const ValuesSchema = {
   attendanceId: { type: "string" },
   name: { type: "string" },
   description: { type: "string" },
-  fieldsJson: { type: "string" },
+  lastSession: { type: "string" },
+  fieldsJson: { type: "string", default: "[]" },
 } as const;
 
 const TablesSchema = {
   admin: { userId: { type: "string" } },
   session: { start: { type: "number" }, end: { type: "number" } },
-  user: { userId: { type: "string" }, dataJson: { type: "string" } },
   attendance: { sessionId: { type: "string" }, userId: { type: "string" } },
+  user: {
+    userId: { type: "string" },
+    facialEmbedding: { type: "string", default: "[]" },
+    dataJson: { type: "string", default: "{}" },
+  },
 } as const;
 
 export const {
@@ -21,6 +26,10 @@ export const {
   useProvideStore,
   useStore: useAttendanceStore,
   useValue: useAttendanceValue,
+  useCell: useAttendanceCell,
+  useHasRow: useAttendanceHasRow,
+  useRowCount: useAttendanceRowCount,
+  useResultRowCount: useAttendanceResultRowCount
 } = UiReact as UiReact.WithSchemas<[typeof TablesSchema, typeof ValuesSchema]>;
 
 export interface AttendanceStoreProps {

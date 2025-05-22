@@ -1,4 +1,4 @@
-import { Button, ButtonIcon, ButtonText } from "@/components/ui/button2";
+import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
 import {
   FormControl,
   FormControlError,
@@ -47,13 +47,16 @@ export default function AttendanceCreateScreen() {
 
   const { fields, append, remove } = useFieldArray({ control, name: "fields" });
 
-  const onSubmit = (data: AttendanceCreateSchemaData) => {
+  const onSubmit = ({ fields, ...data }: AttendanceCreateSchemaData) => {
     const attendanceId = Crypto.randomUUID();
     userStore?.setRow("attendance", attendanceId, {
       attendanceId,
       initialContentJson: JSON.stringify([
-        { admin: { [attendanceId]: { attendanceId } } },
-        data,
+        { admin: { [user.uid]: { userId: user.uid } } },
+        {
+          ...data,
+          fieldsJson: JSON.stringify(fields),
+        },
       ]),
     });
 

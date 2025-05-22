@@ -1,5 +1,5 @@
 import { Alert, AlertIcon, AlertText } from "@/components/ui/alert";
-import { Button, ButtonSpinner, ButtonText } from "@/components/ui/button2";
+import { Button, ButtonSpinner, ButtonText } from "@/components/ui/button";
 import {
   FormControl,
   FormControlError,

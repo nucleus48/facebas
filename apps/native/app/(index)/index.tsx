@@ -5,8 +5,8 @@ import { firebaseAuth } from "@/lib/firebase";
 import { useAuth } from "@/providers/auth-provider";
 import { useUserRowIds } from "@/stores/user-store";
 import { Stack, useRouter } from "expo-router";
-import { LogOutIcon, UserIcon } from "lucide-react-native";
-import { Pressable, ScrollView, View } from "react-native";
+import { LogOutIcon } from "lucide-react-native";
+import { Pressable, ScrollView } from "react-native";
 
 export default function HomeScreen() {
   const { user } = useAuth();
@@ -19,14 +19,9 @@ export default function HomeScreen() {
   };
 
   const renderHeaderRight = () => (
-    <View className="flex-row">
-      <Pressable className="mr-4">
-        <Icon as={UserIcon} />
-      </Pressable>
-      <Pressable onPress={handleSignOut}>
-        <Icon as={LogOutIcon} />
-      </Pressable>
-    </View>
+    <Pressable onPress={handleSignOut}>
+      <Icon as={LogOutIcon} />
+    </Pressable>
   );
 
   return (

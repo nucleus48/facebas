@@ -17,7 +17,16 @@ export default function IndexLayout() {
   return (
     <TinyBaseProvider>
       <UserStore />
-      <Stack />
+      <Stack>
+        <Stack.Screen
+          name="attendance/[attendanceId]/index"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="attendance/[attendanceId]/registration"
+          options={{ title: "Registration" }}
+        />
+      </Stack>
     </TinyBaseProvider>
   );
 }

@@ -13,9 +13,6 @@
     },
     "ios": {
       "supportsTablet": true,
-      "infoPlist": {
-        "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera."
-      },
       "bundleIdentifier": "com.face.bas"
     },
     "android": {
@@ -24,8 +21,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.face.bas",
-      "permissions": ["android.permission.CAMERA"]
+      "package": "com.face.bas"
     },
     "web": {
       "bundler": "metro",
@@ -52,16 +48,10 @@
         }
       ],
       [
-        "expo-camera",
-        {
-          "cameraPermission": "$(PRODUCT_NAME) needs access to your Camera.",
-          "recordAudioAndroid": false
-        }
-      ],
-      [
         "react-native-vision-camera",
         {
-          "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera."
+          "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera.",
+          "enableCodeScanner": true
         }
       ]
     ],
