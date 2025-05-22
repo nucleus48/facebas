@@ -31,9 +31,11 @@
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
     "@shopify/flash-list": "1.7.6",
+    "@shopify/react-native-skia": "2.0.0-next.4",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "~53.0.9",
     "expo-blur": "~14.1.4",
+    "expo-build-properties": "~0.14.6",
     "expo-constants": "~17.1.6",
     "expo-crypto": "~14.1.4",
     "expo-dev-client": "~5.1.8",
@@ -53,6 +55,7 @@
     "firebase": "^11.7.1",
     "lucide-react-native": "^0.511.0",
     "nativewind": "^4.1.23",
+    "onnxruntime-react-native": "^1.22.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hook-form": "^7.56.4",
@@ -65,6 +68,7 @@
     "react-native-screens": "~4.10.0",
     "react-native-svg": "15.11.2",
     "react-native-vision-camera": "^4.6.4",
+    "react-native-vision-camera-face-detector": "^1.8.3",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "react-native-worklets-core": "^1.5.0",
@@ -82,6 +86,7 @@
     "jscodeshift": "0.15.2",
     "typescript": "~5.8.3"
   },
+  "onnxruntimeExtensionsEnabled": "true",
   "expo": {
     "doctor": {
       "reactNativeDirectoryCheck": {

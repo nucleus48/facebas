@@ -20,7 +20,11 @@ export default function IndexLayout() {
       <Stack>
         <Stack.Screen
           name="attendance/[attendanceId]/index"
-          options={{ headerShown: false }}
+          options={{ title: "", headerTransparent: true }}
+        />
+        <Stack.Screen
+          name="attendance/[attendanceId]/verification"
+          options={{ title: "", headerTransparent: true }}
         />
         <Stack.Screen
           name="attendance/[attendanceId]/registration"

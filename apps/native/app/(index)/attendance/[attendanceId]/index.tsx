@@ -40,7 +40,7 @@ export default function AttendanceScreen() {
 
   const handleDeleteAttendance = () => {
     userStore?.delRow("attendance", attendanceId);
-    router.dismissTo("/")
+    router.dismissTo("/");
   };
 
   return (
@@ -61,7 +61,14 @@ export default function AttendanceScreen() {
 
         <View className="max-w-60 mx-auto w-full">
           {isUser ? (
-            <Button>
+            <Button
+              onPress={() =>
+                router.push({
+                  pathname: "/attendance/[attendanceId]/verification",
+                  params: { attendanceId },
+                })
+              }
+            >
               <ButtonText>Mark Attendance</ButtonText>
             </Button>
           ) : (
