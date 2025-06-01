@@ -3458,14 +3458,6 @@ buffer@^5.4.3:
     base64-js "^1.3.1"
     ieee754 "^1.1.13"
 
-buffer@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
-  integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
-  dependencies:
-    base64-js "^1.3.1"
-    ieee754 "^1.2.1"
-
 bytes@3.1.2, bytes@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
@@ -5409,7 +5401,7 @@ idb@7.1.1:
   resolved "https://registry.yarnpkg.com/idb/-/idb-7.1.1.tgz#d910ded866d32c7ced9befc5bfdf36f572ced72b"
   integrity sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==
 
-ieee754@^1.1.13, ieee754@^1.2.1:
+ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
@@ -6930,19 +6922,6 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-onnxruntime-common@1.22.0:
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/onnxruntime-common/-/onnxruntime-common-1.22.0.tgz#27d7d06ebb6c7d3dd773dfa21b6fa2ae86f64983"
-  integrity sha512-vcuaNWgtF2dGQu/EP5P8UI5rEPEYqXG2sPPe5j9lg2TY/biJF8eWklTMwlDO08iuXq48xJo0awqIpK5mPG+IxA==
-
-onnxruntime-react-native@^1.22.0:
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/onnxruntime-react-native/-/onnxruntime-react-native-1.22.0.tgz#106c1b21d42fd380cd9e596e0c849c8c3a8162cb"
-  integrity sha512-MziH4vPY7zlgAM1Hkarxqo5CF4TspfVzYuIcYBoDCz69Yx6Pz2CadgHibsdWCslDtZr5CxnXENiV3UQdRjufJQ==
-  dependencies:
-    buffer "^6.0.3"
-    onnxruntime-common "1.22.0"
-
 open@^7.0.3, open@^7.4.2:
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/open/-/open-7.4.2.tgz#b8147e26dcf3e426316c730089fd71edd29c2321"
@@ -7480,6 +7459,11 @@ react-native-edge-to-edge@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/react-native-edge-to-edge/-/react-native-edge-to-edge-1.6.0.tgz#2ba63b941704a7f713e298185c26cde4d9e4b973"
   integrity sha512-2WCNdE3Qd6Fwg9+4BpbATUxCLcouF6YRY7K+J36KJ4l3y+tWN6XCqAC4DuoGblAAbb2sLkhEDp4FOlbOIot2Og==
+
+react-native-fast-tflite@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-fast-tflite/-/react-native-fast-tflite-1.6.1.tgz#799e2063bd9ad67dbe1dbd65d5165ade7b3a3464"
+  integrity sha512-qZpVLLtIDXRTnl4bavZAoAY0YbcghvU5Rok0rbJ3HSQptyfQCY9AG/mA/4Xjc29vybIWibvRd1hDbDR7HFXsTQ==
 
 react-native-gesture-handler@~2.24.0:
   version "2.24.0"
@@ -8954,6 +8938,11 @@ vary@^1, vary@^1.1.2, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+vision-camera-resize-plugin@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vision-camera-resize-plugin/-/vision-camera-resize-plugin-3.2.0.tgz#57942b5603bffc613938fc8648fd94bba7acdaac"
+  integrity sha512-OR/rU6cwnSoFs3zN8EtAiomwtoXBzQsGnQxfUY5wfQ9WcssLY+Hrcdp/pr2qY3fsHokKtYZHeF43eXNaMyBi6g==
 
 vlq@^1.0.0:
   version "1.0.1"

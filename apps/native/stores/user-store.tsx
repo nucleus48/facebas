@@ -1,8 +1,12 @@
 import { useAuth } from "@/providers/auth-provider";
 import * as UiReact from "tinybase/ui-react/with-schemas";
-import { createMergeableStore, NoValuesSchema } from "tinybase/with-schemas";
+import { createMergeableStore } from "tinybase/with-schemas";
 import AttendanceStore from "./attendance-store";
 import { usePersistence } from "./use-persistence";
+
+const ValuesSchema = {
+  facialEmbedding: { type: "string", default: "[]" },
+} as const;
 
 const TablesSchema = {
   attendance: {
@@ -17,13 +21,13 @@ export const {
   useTable,
   useStore: useUserStore,
   useRowIds: useUserRowIds,
-} = UiReact as UiReact.WithSchemas<[typeof TablesSchema, NoValuesSchema]>;
+} = UiReact as UiReact.WithSchemas<[typeof TablesSchema, typeof ValuesSchema]>;
 
 export default function UserStore() {
   const { user } = useAuth();
 
   const store = useCreateMergeableStore(() => {
-    return createMergeableStore(user.uid).setTablesSchema(TablesSchema);
+    return createMergeableStore(user.uid).setSchema(TablesSchema, ValuesSchema);
   }, [user.uid]);
 
   const attendanceTable = useTable("attendance", store);

@@ -3,7 +3,6 @@ import { Button, ButtonSpinner, ButtonText } from "@/components/ui/button";
 import {
   FormControl,
   FormControlError,
-  FormControlErrorIcon,
   FormControlErrorText,
   FormControlLabel,
   FormControlLabelText,
@@ -11,13 +10,13 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { Input, InputField } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
-import { firebaseAuth } from "@/lib/firebase";
-import { AuthSchema, AuthSchemaData } from "@/lib/schema";
+import { firebaseAuth, handleFirebaseError } from "@/lib/firebase";
+import { SignInFormData, SignInFormSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, router } from "expo-router";
 import { FirebaseError } from "firebase/app";
-import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
-import { AlertCircleIcon, InfoIcon } from "lucide-react-native";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { InfoIcon } from "lucide-react-native";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { View } from "react-native";
@@ -33,37 +32,24 @@ export default function SignInScreen() {
     control,
     handleSubmit,
     formState: { isSubmitting, isValid },
-  } = useForm<AuthSchemaData>({
-    resolver: zodResolver(AuthSchema),
+  } = useForm<SignInFormData>({
+    resolver: zodResolver(SignInFormSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async ({ email, password }: AuthSchemaData) => {
+  const onSubmit = async ({ email, password }: SignInFormData) => {
     try {
       setError(null);
       await signInWithEmailAndPassword(firebaseAuth, email, password);
-      router.dismissTo("/");
+      router.push("/verification");
     } catch (error) {
-      let errorMessage = "";
-
       if (error instanceof FirebaseError) {
-        switch (error.code) {
-          case AuthErrorCodes.NETWORK_REQUEST_FAILED:
-            errorMessage = "Network error. Please try again.";
-            break;
-          case AuthErrorCodes.INVALID_LOGIN_CREDENTIALS:
-            errorMessage = "Invalid email or password.";
-            break;
-          default:
-            errorMessage = "An error occurred. Please try again.";
-        }
+        const errorMessage = handleFirebaseError(error);
+        setError(errorMessage);
       }
-
-      setError(errorMessage);
-      console.error("Error creating user:", error);
     }
   };
 
@@ -107,14 +93,13 @@ export default function SignInScreen() {
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
-                  placeholder="Email address"
+                  placeholder="e.g. johndoe@gmail.com"
                   inputMode="email"
                   autoCapitalize="none"
                   enterKeyHint="next"
                 />
               </Input>
               <FormControlError>
-                <FormControlErrorIcon as={AlertCircleIcon} />
                 <FormControlErrorText>{error?.message}</FormControlErrorText>
               </FormControlError>
             </FormControl>
@@ -141,12 +126,11 @@ export default function SignInScreen() {
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
-                  placeholder="Password"
+                  placeholder="Enter your password"
                   secureTextEntry
                 />
               </Input>
               <FormControlError>
-                <FormControlErrorIcon as={AlertCircleIcon} />
                 <FormControlErrorText>{error?.message}</FormControlErrorText>
               </FormControlError>
             </FormControl>
