@@ -8,7 +8,7 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -37,7 +37,17 @@ export default function RootLayout() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <GluestackUIProvider mode="light">
           <AuthProvider>
-            <Slot />
+            {({ isAuthenticated }) => (
+              <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Protected guard={isAuthenticated}>
+                  <Stack.Screen name="(index)" />
+                </Stack.Protected>
+
+                <Stack.Protected guard={!isAuthenticated}>
+                  <Stack.Screen name="(auth)" />
+                </Stack.Protected>
+              </Stack>
+            )}
           </AuthProvider>
         </GluestackUIProvider>
       </GestureHandlerRootView>

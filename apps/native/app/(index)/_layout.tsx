@@ -1,23 +1,24 @@
-import { useAuth } from "@/providers/auth-provider";
 import UserStore from "@/stores/user-store";
-import { Redirect, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { Provider as TinyBaseProvider } from "tinybase/ui-react";
 
+export const unstable_settings = {
+  initialRouteName: "index",
+};
+
 export default function IndexLayout() {
-  const { isLoading, isAuthenticated } = useAuth();
-
-  if (isLoading) {
-    return null;
-  }
-
-  if (!isAuthenticated) {
-    return <Redirect href="/sign-in" />;
-  }
-
   return (
     <TinyBaseProvider>
       <UserStore />
       <Stack>
+        <Stack.Screen
+          name="enrollment"
+          options={{
+            title: "Face Enrollment",
+            headerTransparent: true,
+            headerTitleAlign: "center",
+          }}
+        />
         <Stack.Screen
           name="attendance/[attendanceId]/index"
           options={{ title: "", headerTransparent: true }}

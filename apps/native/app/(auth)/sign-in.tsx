@@ -13,7 +13,7 @@ import { Text } from "@/components/ui/text";
 import { firebaseAuth, handleFirebaseError } from "@/lib/firebase";
 import { SignInFormData, SignInFormSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, router } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { InfoIcon } from "lucide-react-native";
@@ -27,6 +27,7 @@ import {
 
 export default function SignInScreen() {
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const {
     control,
@@ -44,7 +45,7 @@ export default function SignInScreen() {
     try {
       setError(null);
       await signInWithEmailAndPassword(firebaseAuth, email, password);
-      router.push("/verification");
+      router.dismissTo("/");
     } catch (error) {
       if (error instanceof FirebaseError) {
         const errorMessage = handleFirebaseError(error);
