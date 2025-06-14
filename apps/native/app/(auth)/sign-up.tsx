@@ -13,7 +13,7 @@ import { Text } from "@/components/ui/text";
 import { firebaseAuth, handleFirebaseError } from "@/lib/firebase";
 import { SignUpFormSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { InfoIcon } from "lucide-react-native";
@@ -28,7 +28,6 @@ import { z } from "zod";
 
 export default function SignUpScreen() {
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
 
   const {
     control,
@@ -57,7 +56,6 @@ export default function SignUpScreen() {
       );
 
       await updateProfile(user, { displayName: name });
-      router.dismissTo("/enrollment", { withAnchor: true });
     } catch (error) {
       if (error instanceof FirebaseError) {
         const errorMessage = handleFirebaseError(error);

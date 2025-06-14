@@ -12,8 +12,8 @@ const firebaseConfig = {
   projectId: "face-bas",
   storageBucket: "face-bas.firebasestorage.app",
   messagingSenderId: "42367652011",
-  appId: "1:42367652011:web:9bfa355e6574df0b4da7ee",
-  measurementId: "G-JLBX00TX5L",
+  appId: "1:42367652011:web:815d64769703732a4da7ee",
+  measurementId: "G-H8QXVP9XJQ",
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);

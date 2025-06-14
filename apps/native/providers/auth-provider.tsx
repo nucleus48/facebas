@@ -3,70 +3,44 @@ import * as SplashScreen from "expo-splash-screen";
 import { type User } from "firebase/auth";
 import { createContext, use, useEffect, useState } from "react";
 
-export type AuthLoading = {
-  user: null;
-  isAuthenticated: false;
-  isLoading: true;
-};
+export type AuthContextValue = { user: User | null };
 
-export type Authenticated = {
-  user: User;
-  isAuthenticated: true;
-  isLoading: false;
-};
-
-export type UnAuthenticated = {
-  user: null;
-  isAuthenticated: false;
-  isLoading: false;
-};
-
-export type AuthContextValue = AuthLoading | Authenticated | UnAuthenticated;
-
-const initialValue: AuthContextValue = {
-  user: null,
-  isAuthenticated: false,
-  isLoading: true,
-};
-
-export const AuthContext = createContext<AuthContextValue>(initialValue);
+export const AuthContext = createContext<AuthContextValue>({ user: null });
 
 export default function AuthProvider({
   children,
 }: {
-  children: (props: AuthContextValue) => React.ReactNode;
+  children: (props: { isAuthenticated: boolean }) => React.ReactNode;
 }) {
-  const [value, setValue] = useState<AuthContextValue>(initialValue);
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     return firebaseAuth.onAuthStateChanged((user) => {
-      if (user) {
-        setValue({ user, isAuthenticated: true, isLoading: false });
-      } else {
-        setValue({ user, isAuthenticated: false, isLoading: false });
-      }
-
-      SplashScreen.hide();
+      setUser(user);
+      setIsAuthenticated(!!user);
+      setIsLoading(false);
     });
   }, []);
 
-  if (value.isLoading) return null;
+  useEffect(() => {
+    if (isLoading) SplashScreen.hide();
+  }, [isLoading]);
 
-  return <AuthContext value={value}>{children?.(value)}</AuthContext>;
+  if (isLoading) return null;
+
+  return (
+    <AuthContext value={{ user }}>{children({ isAuthenticated })}</AuthContext>
+  );
 }
 
 export const useAuth = () => {
-  const auth = use(AuthContext);
+  const { user } = use(AuthContext);
 
-  if (!auth) {
-    throw new Error("useAuth must be used within an AuthProvider");
+  if (user === null) {
+    throw new Error("useAuth must be called in an authenticated route");
   }
 
-  if (!auth.isAuthenticated) {
-    throw new Error(
-      "Unauthenticated routes should not access the auth context"
-    );
-  }
-
-  return auth;
+  return { user };
 };
