@@ -15,7 +15,6 @@ export default function HomeScreen() {
 
   const handleSignOut = async () => {
     firebaseAuth.signOut();
-    router.dismissTo("/sign-in");
   };
 
   const renderHeaderRight = () => (

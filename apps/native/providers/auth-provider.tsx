@@ -25,7 +25,7 @@ export default function AuthProvider({
   }, []);
 
   useEffect(() => {
-    if (isLoading) SplashScreen.hide();
+    if (!isLoading) SplashScreen.hide();
   }, [isLoading]);
 
   if (isLoading) return null;
