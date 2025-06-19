@@ -88,9 +88,6 @@
     "typescript": "~5.8.3"
   },
   "expo": {
-    "autolinking": {
-      "nativeModulesDir": "../../packages"
-    },
     "doctor": {
       "reactNativeDirectoryCheck": {
         "listUnknownPackages": false
