@@ -1,3 +1,5 @@
+import { useAppState } from "@/hooks/use-app-state";
+import { useIsFocused } from "@react-navigation/native";
 import { useEffect } from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 import Svg, { Defs, Ellipse, Mask, Rect } from "react-native-svg";
@@ -12,6 +14,10 @@ import {
 import { useFaceDetector } from "react-native-vision-camera-face-detector";
 
 export default function EnrollmentScreen() {
+  const isFocused = useIsFocused();
+  const appState = useAppState();
+  const isCameraActive = isFocused && appState === "active";
+
   const { hasPermission, requestPermission } = useCameraPermission();
   const { width, height } = useWindowDimensions();
 
@@ -29,8 +35,6 @@ export default function EnrollmentScreen() {
   const frameProcessor = useFrameProcessor((frame) => {
     "worklet";
     const faces = detectFaces(frame);
-
-    console.log("Detected faces:", faces);
   }, []);
 
   useEffect(() => {
@@ -41,7 +45,7 @@ export default function EnrollmentScreen() {
     <View className="flex-1">
       {hasPermission && device && (
         <Camera
-          isActive
+          isActive={isCameraActive}
           device={device}
           format={format}
           frameProcessor={frameProcessor}
